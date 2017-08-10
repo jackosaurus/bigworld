@@ -1,5 +1,8 @@
 import React from 'react';
-import GoogleMaps from '@google/maps';
+
+let GoogleMapsLoader = (typeof window !== 'undefined')
+    ? require('google-maps')
+    : null;
 
 import { GOOGLE_MAPS_API_KEY } from '../config';
 
@@ -21,17 +24,26 @@ class Map extends React.Component {
     }
 
     componentDidMount() {
-        const googleMapsClient = GoogleMaps.createClient({
-            key: GOOGLE_MAPS_API_KEY,
-        });
+        const mapContainer = document.getElementById('MapContainer');
 
-        console.log(googleMapsClient);
+        GoogleMapsLoader
+            .load(google => {
+                this.googleMapsClient = new google.maps.Map(mapContainer, {});
+            });
+    }
+
+    componentWillUnmount() {
+        GoogleMapsLoader.release();
     }
 
     render() {
         return (
             <div>
-                MAP VIEW
+                <div
+                    id="MapContainer"
+                    className="mapContainer"
+                >
+                </div>
             </div>
         );
     }

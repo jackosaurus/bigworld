@@ -2,6 +2,7 @@
 # Created by https://www.gitignore.io/api/node,macos
 
 .next
+static
 
 ### macOS ###
 *.DS_Store
