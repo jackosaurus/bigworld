@@ -17,6 +17,9 @@ class SearchField extends React.Component {
 
     static defaultProps = {
         type: 'text',
+        onChange: () => null,
+        onFocus: () => null,
+        onBlur: () => null,
     };
 
     constructor(props) {
@@ -37,7 +40,7 @@ class SearchField extends React.Component {
             value: event.target.value,
         });
 
-        if (this.props.onChange) this.props.onChange(event, value);
+        this.props.onChange(event, this.state.value);
     }
 
     handleKeyDown(e) {
@@ -49,7 +52,7 @@ class SearchField extends React.Component {
             hasFocus: true,
         });
 
-        if (this.props.onFocus) this.props.onFocus(this.getValue());
+        this.props.onFocus(this.getValue());
     }
 
     handleBlur() {
@@ -58,7 +61,7 @@ class SearchField extends React.Component {
             hasHadFocus: true,
         });
 
-        if (this.props.onBlur) this.props.onBlur(this.getValue());
+        this.props.onBlur(this.getValue());
     }
 
     getValue() {
