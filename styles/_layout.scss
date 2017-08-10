@@ -1,0 +1,32 @@
+.layout {
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.layout__header {
+    display: none;
+}
+
+.layout__aside {
+    background-color: #27292f;
+    bottom: 0;
+    color: white;
+    height: 100%;
+    left: 0;
+    padding: 40px;
+    position: absolute;
+    top: 0;
+    width: 250px;
+    z-index: 2;
+}
+
+.layout__main {
+    display: block;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+}

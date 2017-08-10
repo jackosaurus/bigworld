@@ -8,10 +8,16 @@ import {
 } from '../components/index';
 
 export default () => (
-    <div>
+    <div className="layout">
         <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-        <Navigation />
-        <Map />
-        <Results />
+        <header className="layout__header">
+            <Navigation />
+        </header>
+        <aside className="layout__aside">
+            <Results />
+        </aside>
+        <main className="layout__main">
+            <Map />
+        </main>
     </div>
 );
