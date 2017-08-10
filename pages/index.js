@@ -1,4 +1,6 @@
 import React from 'react';
+import stylesheet from 'styles/index.scss';
+
 import {
     Map,
     Navigation,
@@ -7,6 +9,7 @@ import {
 
 export default () => (
     <div>
+        <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
         <Navigation />
         <Map />
         <Results />
