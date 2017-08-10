@@ -1,8 +1,14 @@
 import React from 'react';
-import Map from '../components/map';
+import {
+    Map,
+    Navigation,
+    Results,
+} from '../components/index';
 
 export default () => (
     <div>
-        Welcome to next.js! <Map />
+        <Navigation />
+        <Map />
+        <Results />
     </div>
 );
