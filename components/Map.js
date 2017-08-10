@@ -25,7 +25,10 @@ class Map extends React.Component {
 
     componentDidMount() {
         const mapContainer = document.getElementById('MapContainer');
-        var uluru = {lat: -25.363, lng: 131.044};
+        const uluru = {
+            lat: -25.363,
+            lng: 131.044,
+        };
 
         GoogleMapsLoader
             .load(google => {

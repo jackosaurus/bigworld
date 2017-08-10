@@ -1,7 +1,8 @@
 import React from 'react';
+import SearchField from './SearchField';
 
 export default () => (
     <div>
-        results
+        <SearchField />
     </div>
 );
