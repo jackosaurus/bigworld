@@ -1,15 +1,31 @@
 {
-  "name": "hackathon-2017",
-  "version": "0.1.0",
-  "main": "index.js",
-  "author": "Daniel Del Core <daniel.delcore.92@gmail.com>",
-  "license": "MIT",
+  "name": "heroku-nextjs",
+  "version": "1.0.0",
+  "description": "Deploy Next.js server-side React apps to Heroku",
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
-    "heroku-postbuild": "next build"
+    "start": "next start -p $PORT",
+    "heroku-postbuild": "npm run build"
   },
+  "engines": {
+    "node": "6.11.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mars/heroku-nextjs.git"
+  },
+  "keywords": [
+    "react",
+    "ssr",
+    "server-side-rendering"
+  ],
+  "author": "Mars Hall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mars/heroku-nextjs/issues"
+  },
+  "homepage": "https://github.com/mars/heroku-nextjs#readme",
   "dependencies": {
     "@google/maps": "^0.4.3",
     "next": "^3.0.3",
