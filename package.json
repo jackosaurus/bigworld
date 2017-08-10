@@ -8,7 +8,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "next build"
   },
   "dependencies": {
     "@google/maps": "^0.4.3",
