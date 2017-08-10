@@ -1,4 +1,7 @@
 import React from 'react';
+import withRedux from 'next-redux-wrapper'
+
+import { initStore } from '../stores/search';
 import stylesheet from 'styles/index.scss';
 
 import {
@@ -7,7 +10,7 @@ import {
     Results,
 } from '../components/index';
 
-export default () => (
+export default withRedux(initStore)(() => (
     <div className="layout">
         <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
         <header className="layout__header">
@@ -20,4 +23,4 @@ export default () => (
             <Map />
         </main>
     </div>
-);
+));

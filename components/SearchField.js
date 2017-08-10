@@ -11,6 +11,7 @@ class SearchField extends React.Component {
         name: string.isRequired,
         className: string,
         onChange: func,
+        onKeyDown: func,
         onFocus: func,
         onBlur: func,
     };
@@ -18,6 +19,7 @@ class SearchField extends React.Component {
     static defaultProps = {
         type: 'text',
         onChange: () => null,
+        onKeyDown: () => null,
         onFocus: () => null,
         onBlur: () => null,
     };
@@ -44,7 +46,7 @@ class SearchField extends React.Component {
     }
 
     handleKeyDown(e) {
-        // TODO:
+        this.props.onKeyDown(e);
     }
 
     handleFocus() {
