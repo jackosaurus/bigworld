@@ -22,7 +22,6 @@ class SearchField extends React.Component {
     constructor(props) {
         super(props);
         bindAll(this, 'handleChange', 'handleBlur', 'handleFocus', 'handleKeyDown');
-        this.eventKeyCode = undefined;
     }
 
     state = {
@@ -33,10 +32,6 @@ class SearchField extends React.Component {
 
     handleChange(event) {
         event.preventDefault();
-        // let value = event.currentTarget.value;
-
-        // this.eventKeyCode = undefined;
-        // this.props.setValue(value);
 
         this.setState({
             value: event.target.value,
@@ -46,7 +41,7 @@ class SearchField extends React.Component {
     }
 
     handleKeyDown(e) {
-        this.eventKeyCode = e.keyCode;
+        // TODO:
     }
 
     handleFocus() {
@@ -79,7 +74,7 @@ class SearchField extends React.Component {
         } = this.props;
 
         const id = `${name}-field`;
-        const classes = classNames(className, 'form-field', `${type}-input`, {
+        const classes = classNames(className, 'searchField', `${type}-input`, {
             'has-focus': this.state.hasFocus,
             'has-value': !!this.getValue(),
         });

@@ -1,0 +1,12 @@
+$searchFieldHeight: 60px;
+
+.searchField {
+    display: block;
+    width: 100%;
+
+    input {
+        display: block;
+        height: $searchFieldHeight;
+        width: 100%;
+    }
+}
