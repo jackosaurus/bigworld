@@ -45,7 +45,7 @@ export default () => (
           </div>
           <div className="row">
             <div className="col-lg-12">
-              <img src="/static/images/doggo-trump.jpg" />
+              <img src="https://s3-ap-southeast-1.amazonaws.com/wedy/doggo-trump.jpg" />
               <h1>Never get bamboozled again!</h1>
               <br/>
               <p>Finding providers have never been so easy, simply add your country and it will show you the supported listings of providers in your country.</p>
