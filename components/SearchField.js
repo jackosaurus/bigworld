@@ -99,6 +99,7 @@ class SearchField extends React.Component {
                     onBlur={this.handleBlur}
                     onFocus={this.handleFocus}
                     value={this.getValue()}
+                    placeholder="e.g. australia"
                 />
             </div>
         );
