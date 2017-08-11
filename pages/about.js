@@ -45,10 +45,14 @@ export default () => (
           </div>
           <div className="row">
             <div className="col-lg-12">
-              <h1>Found problem?</h1>
+              <img src="/static/images/doggo-trump.jpg" />
+              <h1>Never get bamboozled again!</h1>
               <br/>
-              <p>If you do find information in here that is inaccurate or incomplete, you can contact us via <a target="_blank" href="https://bigcommerce.slack.com/messages/C06V1EPQW/">slack</a> or file a <a target="_blank" href="https://jira.bigcommerce.com/secure/CreateIssue!default.jspa">JIRA ticket</a>, we will have a look as soon as we can.</p>
+              <p>Finding providers have never been so easy, simply add your country and it will show you the supported listings of providers in your country.</p>
+              <p> Developed during our Hackathon August 2017.</p>
               <br/>
+
+              <p>Brought to you by Payments team with &#9829;</p>
             </div>
           </div>
         </div>
