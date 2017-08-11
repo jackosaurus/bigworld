@@ -30,6 +30,8 @@ class Map extends React.Component {
             lng: 131.044,
         };
 
+        GoogleMapsLoader.KEY = GOOGLE_MAPS_API_KEY;
+
         GoogleMapsLoader
             .load(google => {
                 this.googleMapsClient = new google.maps.Map(mapContainer, {
