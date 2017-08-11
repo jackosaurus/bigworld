@@ -8,12 +8,16 @@ const providerApi = 'https://bigpay.integration.zone/payment_providers';
 const defaultState = {
     searchString: '',
     paymentProviders: [],
+    activeProvider: {},
     errors: {},
+    isLoading: false,
 };
 
 export const actionTypes = {
-    SEARCH: 'SEARCH',
     GET_PROVIDERS: 'GET_PROVIDERS',
+    IS_LOADING: 'IS_LOADING',
+    SEARCH: 'SEARCH',
+    SET_ACTIVE_PROVIDER: 'SET_ACTIVE_PROVIDER',
 };
 
 // REDUCERS
@@ -28,30 +32,60 @@ export const reducer = (state = defaultState, action) => {
             paymentProviders: action.paymentProviders,
             errors: action.errors,
         });
+    case actionTypes.SET_ACTIVE_PROVIDER:
+        return Object.assign({}, state, {
+            activeProvider: action.activeProvider,
+            errors: action.errors,
+        });
     default:
         return state;
     }
 };
 
 // ACTIONS
+export const isLoading = (loadingState = false) => dispatch => dispatch({
+    type: actionTypes.IS_LOADING,
+    isLoading: loadingState,
+});
+
 export const search = searchString => dispatch => dispatch({
     type: actionTypes.SEARCH,
     searchString,
 });
 
-export const fetchProviderData = () => dispatch => (
-    fetch(providerApi, {
+export const fetchProviderData = () => (dispatch) => {
+    isLoading(true);
+
+    return fetch(providerApi, {
         Accept: 'application/json',
     })
         .then(res => res.json())
-        .then(data => dispatch({
-            type: 'GET_PROVIDERS',
-            paymentProviders: data.payment_providers,
-        }))
-        .catch(errors => dispatch({
-            type: 'GET_PROVIDERS',
-            errors,
-        }))
+        .then((data) => {
+            dispatch({
+                type: actionTypes.GET_PROVIDERS,
+                paymentProviders: data.payment_providers,
+            });
+
+            isLoading(false);
+        })
+        .catch((errors) => {
+            isLoading(false);
+
+            dispatch({
+                type: actionTypes.GET_PROVIDERS,
+                errors,
+            });
+        });
+};
+
+export const fetchProvider = name => (dispatch, getState) => (
+    dispatch(fetchProviderData())
+        .then(() => (
+            dispatch({
+                type: actionTypes.SET_ACTIVE_PROVIDER,
+                activeProvider: getState().paymentProviders.find(el => el.name === name),
+            })
+        ))
 );
 
 export const initStore = (initialState = defaultState) => createStore(

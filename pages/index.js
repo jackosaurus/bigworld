@@ -1,5 +1,5 @@
 import React from 'react';
-import withRedux from 'next-redux-wrapper'
+import withRedux from 'next-redux-wrapper';
 
 import { initStore } from '../stores/search';
 import stylesheet from 'styles/index.scss';

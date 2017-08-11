@@ -6,6 +6,7 @@ const { arrayOf, shape, string } = React.PropTypes;
 function ResultList({ results }) {
     const resultItems = results.map(el => (
             <ResultItem
+                id={el.name}
                 logo={el.logo_url}
                 title={el.display_name}
                 alt={el.display_name}

@@ -1,34 +1,41 @@
 import React from 'react';
-import ProviderLogo from './ProviderLogo'
+import Link from 'next/link';
+
+import ProviderLogo from './ProviderLogo';
 
 const { string } = React.PropTypes;
 
-function ResultItem({ logo, alt, title }) {
+function ResultItem({ id, logo, alt, title }) {
     return (
-        <a href="#" className="resultItemContainer">
-        	<h4>{title}</h4>
-            <div className="resultItem-providerLogo">
-                <ProviderLogo url={logo} alt={title} />
-            </div>
-            <div className="providerType">
-                <span className="label label-primary">Credit</span>
-                <span className="label label-warning">Credit card</span>
-                <span className="label label-success">Pay after delivery</span>
-            </div>
+        <Link href={{ pathname: '/detail', query: { provider: id } }} className="resultItemContainer">
             <div>
-                <span className="glyphicon glyphicon-grain" />
+                <h4>{title}</h4>
+                <div className="resultItem-providerLogo">
+                    <ProviderLogo url={logo} alt={alt} />
+                </div>
+                <div className="providerType">
+                    <span className="label label-primary">Credit</span>
+                    <span className="label label-warning">Credit card</span>
+                    <span className="label label-success">Pay after delivery</span>
+                </div>
+                {title}
+                <div>
+                    <span className="glyphicon glyphicon-grain" />
+                </div>
             </div>
-        </a>
+        </Link>
     );
 }
 
 ResultItem.propTypes = {
+    id: string,
     logo: string,
     alt: string,
     title: string,
 };
 
 ResultItem.defaultProps = {
+    id: '',
     logo: '',
     alt: '',
     title: '',
