@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import withRedux from 'next-redux-wrapper';
 
 import { initStore, fetchProvider } from '../stores/search';
-import stylesheet from 'styles/index.scss';
+import stylesheet from 'styles/index.scss'
 
 const { object, func } = React.PropTypes;
 
@@ -33,19 +33,84 @@ class DetailPage extends React.Component {
         });
     }
 
+    renderPaymentInstruments() {
+    	const { activeProvider } = this.state;
+    	console.log(activeProvider);
+    	return !!activeProvider.payment_instruments
+    		? activeProvider.payment_instruments.map(el => <li>{el}</li>)
+    		: null;
+    }
+
+    renderApiServiceAvailable() {
+    	const { activeProvider } = this.state;
+    	return !!activeProvider.api_service_available
+    		? "API SERVICE IS AVAILABLE"
+    		: "no";
+    }
+
+    renderCountries() {
+    	const { activeProvider } = this.state;
+    	return !!activeProvider.countries
+    		? activeProvider.countries.map(el => <li>{el.name}</li>)
+    		: null;
+    }
+
     render() {
         const { activeProvider } = this.state;
-
         const pageWrapper = (
-            <div className="layout">
+            <div>
                 <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
-                <main className="layout__main--full">
-                    <h1>Detail view</h1>
-                    <p>{activeProvider.name}</p>
-                    <p>{activeProvider.display_name}</p>
-                    <p>{activeProvider.homepage_url}</p>
-                    <p>{activeProvider.version}</p>
-                    <p>{activeProvider.logo_url}</p>
+                <main>
+	                <div className="providerDetailContainer">
+	                	<div className="providerTitle">
+	                		<h1>{activeProvider.display_name}</h1>
+	                	</div>
+	                </div>
+
+	            	<div className="providerContent">
+	            		<p><a href="/">Back</a></p>
+		            	<p><img src={activeProvider.logo_url}/></p>
+		                <p><h4 className="detailHeading">Website</h4>{activeProvider.homepage_url}</p>
+		                <p><h4 className="detailHeading">Integration version:</h4> {activeProvider.version}</p>
+		                <p><h4 className="detailHeading">Payment Instruments:</h4> {this.renderPaymentInstruments()}</p>
+		                <p><h4 className="detailHeading">API Available: </h4>{this.renderApiServiceAvailable()}</p>
+		                <p><h4 className="detailHeading">Auth Service Available:</h4> {!!activeProvider.auth_service_available
+				    		? "Yes"
+				    		: "No"}
+			    		</p>
+		                <p><h4 className="detailHeading">Capture Service Available: </h4>{!!activeProvider.capture_service_available
+				    		? "Yes"
+				    		: "No"}
+			    		</p>
+		                <p><h4 className="detailHeading">Purchase Service Available: </h4>{!!activeProvider.purchase_service_available
+				    		? "Yes"
+				    		: "No"}
+			    		</p>
+		                <p><h4 className="detailHeading">Refund Service Available: </h4>{!!activeProvider.refund_service_available
+				    		? "Yes"
+				    		: "No"}
+			    		</p>
+		                <p><h4 className="detailHeading">Fraud Service Available: </h4>{!!activeProvider.fraud_service_available
+				    		? "Yes"
+				    		: "No"}
+			    		</p>
+		                <p><h4 className="detailHeading">Available in UCO: </h4>{!!activeProvider.available_in_uco
+				    		? "Yes"
+				    		: "No"}
+			    		</p>
+		                <p><h4 className="detailHeading">Available in LCO: </h4>{!!activeProvider.available_in_lco
+				    		? "Yes"
+				    		: "No"}
+			    		</p>
+		                <p><h4 className="detailHeading">Vaulting Service Available:</h4> {!!activeProvider.vaulting
+				    		? "Yes"
+				    		: "No"}
+			    		</p>
+		                <div className="countriesSupported">
+		                	<h4 className="detailHeading">Countries supported: </h4>
+		                	{this.renderCountries()}
+		                </div>
+	            	</div>
                 </main>
             </div>
         );
