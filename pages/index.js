@@ -5,6 +5,7 @@ import { initStore } from '../stores/search';
 import stylesheet from 'styles/index.scss';
 
 import {
+    BigcommerceLogo,
     Map,
     Navigation,
     Results,
@@ -17,6 +18,9 @@ export default withRedux(initStore)(() => (
             <Navigation />
         </header>
         <aside className="layout__aside">
+            <div className="bigcommerceLogo">
+                <BigcommerceLogo className="bigcommerceLogo"/>
+            </div>
             <Results />
         </aside>
         <main className="layout__main">
