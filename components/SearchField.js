@@ -26,7 +26,12 @@ class SearchField extends React.Component {
 
     constructor(props) {
         super(props);
-        bindAll(this, 'handleChange', 'handleBlur', 'handleFocus', 'handleKeyDown');
+        bindAll(this, [
+            'handleChange',
+            'handleBlur',
+            'handleFocus',
+            'handleKeyDown',
+        ]);
     }
 
     state = {
@@ -38,11 +43,10 @@ class SearchField extends React.Component {
     handleChange(event) {
         event.preventDefault();
 
-        this.setState({
-            value: event.target.value,
-        });
-
-        this.props.onChange(event, this.state.value);
+        this.setState(
+            { value: event.target.value },
+            () => this.props.onChange(event, this.getValue())
+        );
     }
 
     handleKeyDown(e) {

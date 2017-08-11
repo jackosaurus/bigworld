@@ -1,18 +1,19 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunkMiddleware from 'redux-thunk';
+import fetch from 'isomorphic-fetch';
+
+const providerApi = 'https://bigpay.integration.zone/payment_providers';
 
 const defaultState = {
     searchString: '',
-    isSearching: false,
-    results: [],
-    countries: [],
+    paymentProviders: [],
     errors: {},
 };
 
 export const actionTypes = {
     SEARCH: 'SEARCH',
-    SEARCH_COMPLETED: 'SEARCH_COMPLETED',
+    GET_PROVIDERS: 'GET_PROVIDERS',
 };
 
 // REDUCERS
@@ -21,14 +22,11 @@ export const reducer = (state = defaultState, action) => {
     case actionTypes.SEARCH:
         return Object.assign({}, state, {
             searchString: action.searchString,
-            isSearching: true,
         });
-    case actionTypes.SEARCH_COMPLETED:
+    case actionTypes.GET_PROVIDERS:
         return Object.assign({}, state, {
-            results: action.results,
-            countries: action.countries,
+            paymentProviders: action.paymentProviders,
             errors: action.errors,
-            isSearching: false,
         });
     default:
         return state;
@@ -40,6 +38,21 @@ export const search = searchString => dispatch => dispatch({
     type: actionTypes.SEARCH,
     searchString,
 });
+
+export const fetchProviderData = () => dispatch => (
+    fetch(providerApi, {
+        Accept: 'application/json',
+    })
+        .then(res => res.json())
+        .then(data => dispatch({
+            type: 'GET_PROVIDERS',
+            paymentProviders: data.payment_providers,
+        }))
+        .catch(errors => dispatch({
+            type: 'GET_PROVIDERS',
+            errors,
+        }))
+);
 
 export const initStore = (initialState = defaultState) => createStore(
     reducer,

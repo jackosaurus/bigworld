@@ -1,14 +1,35 @@
 import React from 'react';
 import ResultItem from './ResultItem';
 
-export default () => (
-    <div className="resultList">
-        Result List
-        <ResultItem />
-        <ResultItem />
-        <ResultItem />
-        <ResultItem />
-        <ResultItem />
-        <ResultItem />
-    </div>
-);
+const { arrayOf, shape, string } = React.PropTypes;
+
+function ResultList({ results }) {
+    const resultItems = results.map(el => (
+        <li>
+            <ResultItem
+                logo={el.logo_url}
+                title={el.display_name}
+                alt={el.display_name}
+            />
+        </li>
+    ));
+
+    return (
+        <ul className="resultList">
+            {resultItems}
+        </ul>
+    );
+}
+
+ResultList.propTypes = {
+    results: arrayOf(shape({
+        logo_url: string,
+        display_name: string,
+    })),
+};
+
+ResultList.defaultProps = {
+    results: [],
+};
+
+export default ResultList;

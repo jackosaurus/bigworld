@@ -2,13 +2,26 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { bindAll } from 'lodash';
+import Fuse from 'fuse.js';
 
-import { initStore, search } from '../stores/search';
+import { search, fetchProviderData } from '../stores/search';
 import SearchField from './SearchField';
 import ResultList from './ResultList';
 
 const { func } = React.PropTypes;
 
+const searchOptions = {
+    shouldSort: true,
+    threshold: 0.6,
+    location: 0,
+    distance: 100,
+    maxPatternLength: 32,
+    minMatchCharLength: 1,
+    keys: [
+        'name',
+        'display_name',
+    ],
+};
 
 class Results extends React.Component {
     static propTypes = {
@@ -19,26 +32,42 @@ class Results extends React.Component {
         super(props);
 
         bindAll(this, 'onSearchValueChange');
+
+        this.state = {
+            paymentProviders: [],
+        };
     }
 
-    componentWillReceiveProps(nextProps) {
-        console.log(nextProps);
-        console.log(nextProps.searchString, nextProps.isSearching);
+    componentWillMount() {
+        this.props.fetchProviderData();
+    }
+
+    componentWillReceiveProps({ paymentProviders, searchString }) {
+        const fuse = new Fuse(paymentProviders, searchOptions);
+        const result = !searchString
+            ? paymentProviders
+            : fuse.search(searchString);
+
+        this.setState({
+            paymentProviders: result,
+        });
     }
 
     onSearchValueChange(event, value) {
         // Dispatch search action here
-        this.props.search({ searchString: value });
+        this.props.search(value);
     }
 
     render() {
+        const { paymentProviders } = this.state;
+
         return (
             <div>
                 <SearchField
                     name="SearchField"
                     onChange={this.onSearchValueChange}
                 />
-                <ResultList />
+                <ResultList results={paymentProviders}/>
             </div>
         );
     }
@@ -46,14 +75,13 @@ class Results extends React.Component {
 
 const mapStateToProps = state => ({
     searchString: state.searchString,
-    isSearching: state.isSearching,
-    results: state.results,
-    countries: state.countries,
+    paymentProviders: state.paymentProviders,
     errors: state.errors,
 });
 
 const mapDispatchToProps = dispatch => ({
     search: bindActionCreators(search, dispatch),
+    fetchProviderData: bindActionCreators(fetchProviderData, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Results);
