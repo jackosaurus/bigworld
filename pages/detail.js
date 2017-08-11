@@ -65,10 +65,38 @@ class DetailPage extends React.Component {
 	                	<div className="providerTitle">
 	                		<h1>{activeProvider.display_name}</h1>
 	                	</div>
+
 	                </div>
 
 	            	<div className="providerContent">
-	            		<p><a href="/">Back</a></p>
+	            		<p>
+    						<nav className="navbar navbar-default navbar-fixed-top" role="navigation">
+						        <div className="container">
+						          <div className="navbar-header page-scroll">
+						            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						              <span className="sr-only">Toggle navigation</span>
+						              <span className="icon-bar"></span>
+						              <span className="icon-bar"></span>
+						              <span className="icon-bar"></span>
+						            </button>
+						            <a className="navbar-brand page-scroll" href="/">Find My Provider</a>
+						          </div>
+						          <div className="collapse navbar-collapse navbar-ex1-collapse">
+						            <ul className="nav navbar-nav">
+					            	<li>
+						            	<a className="page-scroll" href="/">Back</a>
+						            	</li>
+						              <li>
+						                <a className="page-scroll" href="/about">About</a>
+						              </li>
+						              <li>
+						                <a className="page-scroll" href="/contact">Contact</a>
+						              </li>
+						            </ul>
+						          </div>
+						        </div>
+					      	</nav>
+					      </p>
 		            	<p><img src={activeProvider.logo_url}/></p>
 		                <p><h4 className="detailHeading">Website</h4>{activeProvider.homepage_url}</p>
 		                <p><h4 className="detailHeading">Integration version:</h4> {activeProvider.version}</p>
