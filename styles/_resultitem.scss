@@ -1,0 +1,22 @@
+.resultItemContainer {
+	color: black;
+	padding: 10px;
+
+	.glyphicon {
+		color: black;
+	}
+	display: block;
+}
+
+.resultItemContainer:hover {
+	background-color: #e8e8e8;
+}
+
+.providerType {
+	margin-top: 10px;
+}
+
+.providerType .label {
+	margin-left: 3px;
+	margin-right: 3px;
+}

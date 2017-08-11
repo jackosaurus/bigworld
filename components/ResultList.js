@@ -2,7 +2,7 @@ import React from 'react';
 import ResultItem from './ResultItem';
 
 export default () => (
-    <div>
+    <div className="resultList">
         Result List
         <ResultItem />
         <ResultItem />
