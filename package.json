@@ -30,6 +30,7 @@
     "bootstrap-sass": "^3.3.7",
     "classnames": "^2.2.5",
     "fuse.js": "^3.0.5",
+    "express": "4.15.4",
     "google-maps": "^3.2.1",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
