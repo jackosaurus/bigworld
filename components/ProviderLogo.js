@@ -1,8 +1,7 @@
-/* eslint-disable new-cap */
 import React from 'react';
 
-export default () => (
-	<div>
-		<img src="https://bigpay.integration.zone/images/providers/klarna.png" />
-	</div>
+export default ({ url, alt }) => (
+    <div>
+        <img src={url} alt={alt} />
+    </div>
 );
