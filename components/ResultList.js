@@ -5,14 +5,13 @@ const { arrayOf, shape, string } = React.PropTypes;
 
 function ResultList({ results }) {
     const resultItems = results.map(el => (
-        <li>
             <ResultItem
                 logo={el.logo_url}
                 title={el.display_name}
                 alt={el.display_name}
             />
-        </li>
     ));
+
 
     return (
         <ul className="resultList">

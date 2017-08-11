@@ -6,6 +6,7 @@ const { string } = React.PropTypes;
 function ResultItem({ logo, alt, title }) {
     return (
         <a href="#" className="resultItemContainer">
+        	<h4>{title}</h4>
             <div className="resultItem-providerLogo">
                 <ProviderLogo url={logo} alt={title} />
             </div>
@@ -14,7 +15,6 @@ function ResultItem({ logo, alt, title }) {
                 <span className="label label-warning">Credit card</span>
                 <span className="label label-success">Pay after delivery</span>
             </div>
-            {title}
             <div>
                 <span className="glyphicon glyphicon-grain" />
             </div>

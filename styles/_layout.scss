@@ -24,6 +24,7 @@ $asideWidth: 350px;
     top: 0;
     width: $asideWidth;
     z-index: 2;
+    overflow-y: scroll;
 }
 
 .layout__main {

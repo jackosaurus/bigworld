@@ -1,11 +1,17 @@
 .resultItemContainer {
 	color: black;
 	padding: 10px;
+	display: block;
+	border-bottom-style: solid;
+	border-bottom-color: #cecece;
+	border-bottom-width: 1px;
+	background-color: white;
+	padding: 25px;
+
 
 	.glyphicon {
 		color: black;
 	}
-	display: block;
 }
 
 .resultItemContainer:hover {
@@ -19,4 +25,13 @@
 .providerType .label {
 	margin-left: 3px;
 	margin-right: 3px;
+}
+
+.resultItem-providerLogo img {
+	max-width: 100%;
+	max-height: 43px;
+}
+
+.resultItemTitle {
+	width: 100%;
 }
