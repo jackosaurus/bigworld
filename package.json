@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/mars/heroku-nextjs#readme",
   "dependencies": {
+    "bootstrap-sass": "^3.3.7",
     "classnames": "^2.2.5",
     "google-maps": "^3.2.1",
     "isomorphic-fetch": "^2.2.1",
@@ -50,7 +51,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "glob": "^7.1.2",
-    "node-sass": "^4.4.0",
+    "node-sass": "^4.5.3",
     "normalize.css": "5.0.0",
     "postcss-easy-import": "2.0.0",
     "postcss-loader": "1.3.3",
