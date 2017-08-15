@@ -48,14 +48,13 @@ export default () => (
           </div>
           <div className="row">
             <div className="col-lg-12">
-              <img src="https://s3-ap-southeast-1.amazonaws.com/wedy/doggo-trump.jpg" />
-              <h1>Never get bamboozled again!</h1>
+              <h1>Upcoming features</h1>
               <br/>
-              <p>Finding providers have never been so easy, simply add your country and it will show you the supported listings of providers in your country.</p>
-              <p> Developed during our Hackathon August 2017.</p>
-              <br/>
-
-              <p>Brought to you by Payments team with &#9829;</p>
+              <p> &#8226; Add more data / payment providers</p>
+              <p> &#8226; Fix all bugs :) </p>
+              <p> &#8226; Show all payment providers available in countries where the map is focused on </p>
+              <p> &#8226; KB system to query bigpay directly so you no longer need to manually update KB article</p>
+              <p> &#8226; Bcapp control panel payment sections to query BigPay directly</p>
             </div>
           </div>
         </div>

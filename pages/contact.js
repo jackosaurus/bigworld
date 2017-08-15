@@ -29,6 +29,9 @@ export default () => (
                 <a className="page-scroll" href="/about">About</a>
               </li>
               <li>
+                <a className="page-scroll" href="/upcoming">Upcoming Features</a>
+              </li>
+              <li>
                 <a className="page-scroll" href="/contact">Contact</a>
               </li>
             </ul>
