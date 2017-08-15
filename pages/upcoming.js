@@ -55,6 +55,7 @@ export default () => (
               <p> &#8226; Show all payment providers available in countries where the map is focused on </p>
               <p> &#8226; KB system to query bigpay directly so you no longer need to manually update KB article</p>
               <p> &#8226; Bcapp control panel payment sections to query BigPay directly</p>
+              <p> &#8226; maybe add other things too, like Shipping providers ?</p>
             </div>
           </div>
         </div>
